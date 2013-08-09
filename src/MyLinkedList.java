@@ -9,10 +9,13 @@ public class MyLinkedList<E> {
     private Node first;
     private Node last;
 
+    private int size;
+
     public MyLinkedList()
     {
         this.first = null;
         this.last = null;
+        this.size = 0;
     }
 
     public boolean add(E element) {
