@@ -4,3 +4,11 @@
 *.jar
 *.war
 *.ear
+
+# IntellijIDEA Files and Folders #
+*.iml
+.idea
+
+# Temporary Files #
+*.swp
+*~
