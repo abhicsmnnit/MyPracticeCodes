@@ -9,6 +9,12 @@ public class MyLinkedList<E> {
     private Node first;
     private Node last;
 
+    public MyLinkedList()
+    {
+        this.first = null;
+        this.last = null;
+    }
+
     public boolean add(E element) {
         return false;
     }
@@ -43,6 +49,11 @@ public class MyLinkedList<E> {
     private class Node<E> {
         public E value;
         public Node next;
+
+        public Node(E value, Node next) {
+            this.value = value;
+            this.next = next;
+        }
     }
 
     public static void main(String[] args) {
