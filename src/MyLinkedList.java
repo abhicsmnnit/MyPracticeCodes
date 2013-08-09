@@ -6,20 +6,30 @@
  * To change this template use File | Settings | File Templates.
  */
 public class MyLinkedList<E> {
-    private Node first;
-    private Node last;
+    private Node<E> first;
+    private Node<E> last;
 
     private int size;
 
-    public MyLinkedList()
-    {
+    public MyLinkedList() {
         this.first = null;
         this.last = null;
         this.size = 0;
     }
 
     public boolean add(E element) {
-        return false;
+        Node<E> nodeToBeAdded = new Node<E>(element, null);
+
+        if (first == null) {
+            first = nodeToBeAdded;
+        } else {
+            last.next = nodeToBeAdded;
+        }
+        last = nodeToBeAdded;
+
+        size++;
+
+        return true;
     }
 
     public boolean remove(E element) {
@@ -42,23 +52,43 @@ public class MyLinkedList<E> {
     }
 
     public E get(int index) {
-        return null;
+        if (index > size - 1) {
+            throw new IndexOutOfBoundsException(index + ": Invalid Index");
+        }
+        Node<E> currentNode = first;
+        for (int i = 0; i < index; i++) {
+            currentNode = currentNode.next;
+        }
+        return currentNode.value;
     }
 
     public int indexOf(E element) {
         return 0;
     }
 
+    @Override
+    public String toString() {
+        String result = "";
+        for (int i = 0; i < size; i++) {
+            result += "[" + get(i) + "]";
+        }
+        return result;
+    }
+
     private class Node<E> {
         public E value;
-        public Node next;
+        public Node<E> next;
 
-        public Node(E value, Node next) {
+        public Node(E value, Node<E> next) {
             this.value = value;
             this.next = next;
         }
     }
 
     public static void main(String[] args) {
+        MyLinkedList<Integer> myLinkedList = new MyLinkedList<Integer>();
+        System.out.println(myLinkedList.add(1));
+        System.out.println(myLinkedList.add(2));
+        System.out.println(myLinkedList);
     }
 }
