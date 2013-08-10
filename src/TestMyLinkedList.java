@@ -222,9 +222,4 @@ public class TestMyLinkedList {
         myLinkedList.remove(2);
         Assert.assertEquals("[" + addedElement1 + "]" + "[" + addedElement2 + "]" + "[" + addedElement4 + "]" + "[" + addedElement5 + "]", myLinkedList.toString());
     }
-
-    @Test
-    public void test() {
-
-    }
 }
