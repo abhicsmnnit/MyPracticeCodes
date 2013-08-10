@@ -22,7 +22,8 @@ public class MyLinkedList<E> {
 
         if (first == null) {
             first = nodeToBeAdded;
-        } else {
+        }
+        else {
             last.next = nodeToBeAdded;
         }
         last = nodeToBeAdded;
@@ -33,26 +34,62 @@ public class MyLinkedList<E> {
     }
 
     public boolean remove(E element) {
-        return false;
+        return remove(indexOf(element));
     }
 
     public boolean remove(int index) {
-        return false;
+        if (index < 0 || index > size - 1) {
+            return false;
+        }
+
+        if (first == last) { // Only one node in the list
+            first = null;
+            last = null;
+        }
+        else {
+            Node<E> predecessorNode = getNodeAt(index - 1);
+            if (predecessorNode == null) { // First node to be deleted
+                first = first.next;
+            }
+            else if (predecessorNode.next == last) { // Last node to be deleted
+                last = predecessorNode;
+                last.next = null;
+            }
+            else {
+                predecessorNode.next = predecessorNode.next.next;
+            }
+        }
+        size--;
+        return true;
+    }
+
+    private Node<E> getNodeAt(int index) {
+        if (index < 0 || index > size - 1) {
+            return null;
+        }
+        Node<E> currentNode = first;
+        for (int i = 0; i < index; i++) {
+            currentNode = currentNode.next;
+        }
+        return currentNode;
     }
 
     public int size() {
-        return 0;
+        return size;
     }
 
     public void clear() {
+        first = null;
+        last = null;
+        size = 0;
     }
 
     public boolean contains(E element) {
-        return false;
+        return indexOf(element) != -1;
     }
 
     public E get(int index) {
-        if (index > size - 1) {
+        if (index < 0 || index > size - 1) {
             throw new IndexOutOfBoundsException(index + ": Invalid Index");
         }
         Node<E> currentNode = first;
@@ -63,7 +100,18 @@ public class MyLinkedList<E> {
     }
 
     public int indexOf(E element) {
-        return 0;
+        if (element == null) {
+            return -1;
+        }
+
+        int index = -1;
+        for (Node<E> iterator = first; iterator != null; iterator = iterator.next) {
+            index++;
+            if (element.equals(iterator.value)) {
+                return index;
+            }
+        }
+        return -1;
     }
 
     @Override
@@ -83,12 +131,5 @@ public class MyLinkedList<E> {
             this.value = value;
             this.next = next;
         }
-    }
-
-    public static void main(String[] args) {
-        MyLinkedList<Integer> myLinkedList = new MyLinkedList<Integer>();
-        System.out.println(myLinkedList.add(1));
-        System.out.println(myLinkedList.add(2));
-        System.out.println(myLinkedList);
     }
 }
