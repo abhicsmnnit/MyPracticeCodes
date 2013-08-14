@@ -19,14 +19,6 @@ public class Trie<E> {
         this.wordCount = 0;
     }
 
-    private void validateAlphabet() {
-
-    }
-
-    private void validateWord() {
-
-    }
-
     public void insert(String word) {
         validateWord();
         int wordLength = word.length();
@@ -48,13 +40,44 @@ public class Trie<E> {
         pCrawl.isAWord = true;
     }
 
+    public boolean search(String word) {
+        int wordLength = word.length();
+        int index;
+        TrieNode<E> pCrawl;
+
+        pCrawl = root;
+
+        for(int level = 0; level < wordLength; level++)
+        {
+            index = charToIndex(word.charAt(level));
+
+            if(pCrawl.pointerList[index] == null)
+            {
+                return false;
+            }
+
+            pCrawl = pCrawl.pointerList[index];
+        }
+
+        return (pCrawl != null && pCrawl.isAWord);
+    }
+
     private int charToIndex(char c) {
         return (int) c - (int) 'a';
+    }
+
+    private void validateAlphabet() {
+
+    }
+
+    private void validateWord() {
+
     }
 
     private class TrieNode<E> {
         private TrieNode<E>[] pointerList;
         private boolean isAWord;
+
 
         public TrieNode(String alphabet) {
             this.pointerList = new TrieNode[alphabet.length()];
@@ -72,5 +95,6 @@ public class Trie<E> {
         trie.insert("ccab");
         trie.insert("a");
         trie.insert("baba");
+        trie.search("a");
     }
 }
