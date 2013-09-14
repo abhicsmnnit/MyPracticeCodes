@@ -36,4 +36,11 @@ public class TestValidParenthesization {
         String pattern = "(()()(";
         Assert.assertFalse(validParenthesization.isValidParenthesization(pattern));
     }
+
+    @Test
+    public void shouldNotPassAnInvalidPattern() {
+        ValidParenthesization validParenthesization = new ValidParenthesization();
+        String pattern = "(()(*)()";
+        Assert.assertFalse(validParenthesization.isValidParenthesization(pattern));
+    }
 }
