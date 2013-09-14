@@ -56,12 +56,6 @@ public class TestMyArrayUtils {
     }
 
     @Test
-    public void bSearchShouldCorrectPositionForNonExistingElementHighCornerCase() {
-        int[] array = {0, 1, 3, 4};
-        Assert.assertEquals(MyArrayUtils.bSearch(array, 0, array.length - 1, 5), -5);
-    }
-
-    @Test
     public void bSearchFirstOccurrenceShouldCorrectPositionForNonExistingElementHighCornerCase() {
         int[] array = {0, 1, 3, 4};
         Assert.assertEquals(MyArrayUtils.bSearchFirstOccurrence(array, 0, array.length - 1, 5), -5);
@@ -70,7 +64,6 @@ public class TestMyArrayUtils {
     @Test
     public void bSearchLastOccurrenceShouldCorrectPositionForNonExistingElementHighCornerCase() {
         int[] array = {0, 1, 3, 4};
-        System.out.println(Arrays.binarySearch(array, 5));
         Assert.assertEquals(MyArrayUtils.bSearchLastOccurrence(array, 0, array.length - 1, 5), -5);
     }
 }

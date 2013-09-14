@@ -9,7 +9,7 @@ import java.util.Arrays;
  */
 public class MyArrayUtils {
     public static int bSearch(int[] array, int fromIndex, int toIndex, int key) {
-        return bSearchFirstOccurrence(array, fromIndex, toIndex, key);
+        return Arrays.binarySearch(array, fromIndex, toIndex, key);
     }
 
     public static int bSearchFirstOccurrence(int[] array, int fromIndex, int toIndex, int key) {
@@ -17,14 +17,14 @@ public class MyArrayUtils {
         int high = toIndex;
         int mid = 0;
         while (low <= high) {
-            mid = low + (high - low) / 2;
+            mid = (int) Math.floor(low + (high - low) / 2.0);
             if (key < array[mid]) {
                 high = mid - 1;
             }
             else if (key > array[mid]) {
                 low = mid + 1;
             }
-            else if (low < mid) {
+            else if (low != mid) {
                 high = mid;
             }
             else {
@@ -39,14 +39,14 @@ public class MyArrayUtils {
         int high = toIndex;
         int mid = 0;
         while (low <= high) {
-            mid = low + (high - low) / 2;
+            mid = (int) Math.ceil(low + (high - low) / 2.0);
             if (key < array[mid]) {
                 high = mid - 1;
             }
             else if (key > array[mid]) {
                 low = mid + 1;
             }
-            else if (high > mid) {
+            else if (high != mid) {
                 low = mid;
             }
             else {
