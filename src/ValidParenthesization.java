@@ -14,11 +14,15 @@ public class ValidParenthesization {
             if (pattern.charAt(i) == '(') {
                 stack.push('(');
             }
-            else {
+            else if (pattern.charAt(i) == ')') {
                 if (stack.isEmpty()) {
                     return false;
                 }
                 stack.pop();
+            }
+            else {
+                System.out.println("Invalid Pattern");
+                return false;
             }
         }
         return stack.isEmpty();
