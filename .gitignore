@@ -12,3 +12,6 @@
 # Temporary Files #
 *.swp
 *~
+
+# Error Log Files
+hs_err_pid*.log
