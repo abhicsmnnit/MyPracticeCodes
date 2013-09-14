@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Created with IntelliJ IDEA.
  * User: abhinav
@@ -29,7 +31,7 @@ public class MyArrayUtils {
                 return mid;
             }
         }
-        return -(mid + 1);
+        return Arrays.binarySearch(array, fromIndex, toIndex + 1, key);
     }
 
     public static int bSearchLastOccurrence(int[] array, int fromIndex, int toIndex, int key) {
@@ -51,6 +53,6 @@ public class MyArrayUtils {
                 return mid;
             }
         }
-        return -(mid + 1);
+        return Arrays.binarySearch(array, fromIndex, toIndex + 1, key);
     }
 }
