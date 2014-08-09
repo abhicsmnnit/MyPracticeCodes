@@ -1,4 +1,4 @@
-import java.util.List;
+package algo;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,7 +23,7 @@ public class Trie<E> {
         validateWord();
         int wordLength = word.length();
         TrieNode<E> pCrawl = root;
-        int index = 0;
+        int index;
 
         for(int level = 0; level < wordLength; level++ )
         {

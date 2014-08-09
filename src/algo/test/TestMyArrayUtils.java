@@ -1,7 +1,8 @@
+package algo.test;
+
+import algo.MyArrayUtils;
 import junit.framework.Assert;
 import org.junit.Test;
-
-import java.util.Arrays;
 
 /**
  * Created with IntelliJ IDEA.

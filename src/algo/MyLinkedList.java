@@ -1,3 +1,5 @@
+package algo;
+
 /**
  * Created with IntelliJ IDEA.
  * User: abhinav

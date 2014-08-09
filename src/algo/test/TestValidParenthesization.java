@@ -1,3 +1,6 @@
+package algo.test;
+
+import algo.ValidParenthesization;
 import org.junit.Assert;
 import org.junit.Test;
 
