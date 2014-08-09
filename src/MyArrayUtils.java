@@ -15,7 +15,7 @@ public class MyArrayUtils {
     public static int bSearchFirstOccurrence(int[] array, int fromIndex, int toIndex, int key) {
         int low = fromIndex;
         int high = toIndex;
-        int mid = 0;
+        int mid;
         while (low <= high) {
             mid = (int) Math.floor(low + (high - low) / 2.0);
             if (key < array[mid]) {
@@ -54,5 +54,17 @@ public class MyArrayUtils {
             }
         }
         return Arrays.binarySearch(array, fromIndex, toIndex + 1, key);
+    }
+
+    public static int bSearchFirstOccurrenceVersion2(int[] array, int fromIndex, int toIndex, int key) {
+        int low = fromIndex;
+        int high = toIndex;
+        int mid = 0;
+
+        while (low != high) {
+            mid = low + (high - low) / 2;
+        }
+
+        return mid;
     }
 }
